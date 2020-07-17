@@ -1,0 +1,183 @@
+DATABASE  
+038_Hanmant Bawage_KH
+Assignment –1
+Creating sample tables and inserting values.
+1.	create database cdac_assignment;
+2.	use cdac_assignment;
+TABLE 01- SALESPEOPLE:
+3.	create table SALESPEOPLE
+     (Snum int(4),
+     Sname varchar(10),
+           City varchar(10),
+           Comm float(3,2)
+           );
+a) insert into SALESPEOPLE (Snum,Sname,City,Comm) values(1001,'peel',
+   'Londan',0.12);
+b) insert into SALESPEOPLE (Snum,Sname,City,Comm) values(1002,
+   'Serres','San Jose',.13);
+c) insert into SALESPEOPLE (Snum,Sname,City,Comm) values(1004,
+    'Motika','London',0.11);
+d) insert into SALESPEOPLE (Snum,Sname,City,Comm) values(1007,
+   'Rifkin','Barcelona',0.15);
+e) insert into SALESPEOPLE (Snum,Sname,City,Comm) values(1003,
+     'Axelrod','New York',0.10);
+==================================================================================================================
+TABLE  2-- CUSTOMERS
+1.create  table CUSTOMERS(
+     Cnum  int(4),
+     Cname  varchar(10),
+     City varchar(10),
+     Rating  int(4),
+     Snum  int(4));
+
+insert into CUSTOMERS( Cnum  , Cname , City , Rating, Snum)
+ values (2001,'Hoffman','London',100,1001 );
+insert into CUSTOMERS( Cnum  , Cname , City , Rating, Snum)
+ values (2002,'Giovanni',’Rome’, 200,1003);
+
+insert into CUSTOMERS( Cnum  , Cname , City , Rating, Snum)
+ values (2003,'Liu','San Jose',200,1002);
+insert into CUSTOMERS( Cnum  , Cname , City , Rating, Snum)
+ values (2004,'Grass','Berlin',300,1002);
+insert into CUSTOMERS( Cnum  , Cname , City , Rating, Snum)
+ values (2006,'Clemens','London',100,1001);
+insert into CUSTOMERS( Cnum  , Cname , City , Rating, Snum)
+ values (2008,'Cisneros','San Jose',300,1007);
+insert into CUSTOMERS( Cnum  , Cname , City , Rating, Snum)
+ values (2007,'Pereira','Rome',100,1004);
+
+
+
+============================================================================================================
+TABLE 03: ORDERS
+
+
+show databases;
+show tables;
+desc orders;
+
+use cdac_assignment;
+create table ORDERS
+(
+ Onum int(4),
+ Amt  float(7,2),
+ Odate  date ,
+ Cnum int(4) ,
+ Snum  int(4) 
+ );
+ 
+ desc orders;
+
+insert into ORDERS values(3001,18.69,'1990-10-03',2008,1007);
+insert into ORDERS values(3003,767.19,'1990-10-03',2001,1001); 
+insert into ORDERS values(3002,1900.10,'1990-10-03',2007,1004);
+insert into ORDERS values(3005,5160.45,'1990-10-03',2003,1002 );
+insert into ORDERS values(3006,1098.16 ,'1990-10-03', 2008,1007);
+select * from orders;
+insert into ORDERS values(3009,1713.23 ,'1990-10-04',2002,1003);
+insert into ORDERS values(3007,75.75 ,'1990-10-04',2004,1002);
+select * from orders;
+insert into ORDERS values(3008,4723.00,'1990-10-05',2006,1001);
+insert into ORDERS values(3010,1309.95,'1990-10-06',2004,1002);
+insert into ORDERS values(3011,9891.88,'1990-10-06',2006,1001);
+  
+ 
+select * from orders;
+
+
+=======================================================================================================
+=======================================================================================================
+Assignment –2
+Introducing Relational Databases.
+1) Which field of the Customers table is the primary key?
+==>Cnum is primary key in Customers table.
+
+2) What is the 4th column of the Customers table?
+==>Rating is  the 4th column of the Customers.
+
+3)What is another word for row? For column?
+==>row-tuple, opportunity,entity
+column-attribute ,methhod.
+
+4) Why isn’t it possible to see the first five rows of a table?
+==>because while we inserting the rows store in random manner.rows of table not stored seqentially,it scattered all over the db server ,so we can not fatch first five rows of a table.
+
+========================================================================================================
+========================================================================================================
+Assignment –3
+
+1)Does ANSI recognize the data type DATE?
+==>yes,ANSI recognize the data type DATE.
+
+2)2)Which subdivision of SQL is used to insert values in tables? 
+==>for in insert DML(data manuplation language) is used.
+
+========================================================================================================
+========================================================================================================
+Assignment –4
+Retrieving Information from Tables.
+
+1)Write a select command that produces the order number, amount, and date for all rows in the Orders table
+==> select Onum,Amt,Odate from orders;
+
+2)Write  a  query  that  produces  all  rows  from  the  Customers  table  for  which  the salesperson’s number is 1001.
+==> select * from customers where snum=1001;
+
+3)Write  a  query  that  displays  the  Salespeople  table  with  the  columns  in  the following order: city, sname, snum, comm.
+==> select city, sname, snum, comm from salespeople;
+
+4)Write  a  select  command  that  produces  the  rating  followed  by  the  name  of  each customer in San Jose.
+==> select rating,Cname from customers where city='san Jose';
+
+5)Write  a  query  that  will  produce  the  snum  values  of  all  salespeople  (suppress  the duplicates) with orders in the Orders table.
+==>  select distinct snum from orders order by snum; 
+
+==============================================================================================================
+==============================================================================================================
+
+                    Assignment –5
+Relational andLogical Operators.
+
+1)Write a query that will give you all orders for more than Rs. 1,000.
+==> select * from orders where Amt>1000;
+
+2)Write a query that will give you the names and cities of all salespeople in
+ London with a commission above .10.
+
+==> select * from salespeople where city='londan' and comm>0.10;
+
+3)Write a query on the Customers table whose output will exclude all customers with a rating <= 100, unless they are located in Rome.
+==> select * from customers where rating <= 100 and city='Rome';
+
+4)What will be the output from the following query?  
+		Select * from Orders     
+		where (amt < 1000 OR   
+		NOT (odate = ‘1990-10-03’   AND cnum > 2003)); 
+==>
+onum     amt     odate          cnum    snum
+3001	18.69	1990-10-03	2008	1007
+3003	767.19	1990-10-03	2001	1001
+3005	5160.45	1990-10-03	2003	1002
+3009	1713.23	1990-10-04	2002	1003
+3007	75.75	1990-10-04	2004	1002
+3008	4723.00	1990-10-05	2006	1001
+
+5)What will be the output of the following query?
+  	Select * from Orders
+        where NOT ((odate = ‘1990-10-03’ OR
+	snum  >1006) AND amt >= 1500); 
+
+==>
+onum     amt     odate          cnum    snum
+3001	18.69	1990-10-03	2008	1007
+3003	767.19	1990-10-03	2001	1001
+3002	1900.10	1990-10-03	2007	1004
+3005	5160.45	1990-10-03	2003	1002
+3006	1098.16	1990-10-03	2008	1007
+3009	1713.23	1990-10-04	2002	1003
+
+
+6)6)What is a simpler way to write this query? 
+      Select snum, sname, city, comm From Salespeople      
+        where (comm > .12 OR comm <.14); 
+  ==> Select * From Salespeople where comm > .12 OR comm <.14;
