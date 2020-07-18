@@ -1,4 +1,4 @@
-===========================================================Assignment –06===============================================
+===========================================================Assignment â€“06===============================================
 Using Special Operators in Conditions.
 
 1)Write two different queries that would produce all orders taken on October 3rdor 4th, 1990.
@@ -16,15 +16,15 @@ Using Special Operators in Conditions.
 				where s.sname='peel' or s.sname='motika';
 
 
-3)Write a query that will produce all the customers whose names begin with a letter from ‘A’ to ‘G’.
+3)Write a query that will produce all the customers whose names begin with a letter from â€˜Aâ€™ to â€˜Gâ€™.
 
 ==>select cname from customers where cname>='A' and cname<='G';
 
-4)Write a query that selects all customers whose names begin with the letter ‘C’.
+4)Write a query that selects all customers whose names begin with the letter â€˜Câ€™.
  ==> 2 way to solve this query.
   	select * from customers where cname >'c' and cname <'d';
 
    	select * from customers where cname like 'c%';
 
 5)Write a query that selects all orders except those with zeroes or NULLs in the amt field
-==>select * from orders where amt>0;
+==>select * from orders where amt is not null and amt>0;
