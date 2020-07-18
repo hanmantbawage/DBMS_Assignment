@@ -1,0 +1,92 @@
+
+===========Exercise-01=============
+===================================
+
+1.create table SEMP(EMPNO CHAR(4),EMPNAME CHAR(20),BASIC FLOAT(9,2),DEPTNO CHAR(2),DEPTHEAD CHAR(4));
+
+2.create table SDEPT(DEPTNO CHAR(2),DEPTNAME CHAR(15));
+
+show tables;
+
+3.insert into SDEPT values('10', 'Development');
+insert into SDEPT values('20', 'Training');
+
+select * from SDEPT;
+
+insert into SEMP values('0001', 'SUNIL', 6000, '10',NULL);
+insert into SEMP values('0002', 'HIREN', 8000, '20',NULL);
+insert into SEMP values('0003', 'ALI', 4000, '10', '0001');
+insert into SEMP values('0004', 'GEORGE', 6000,NULL, '0002');
+
+4.create table S(`S#` char(10),Sname varchar(20), Status int , City char(10));
+
+create table P(`P#` char(10), Pname varchar(20), Color char(10), Weight int, City char(10));
+
+create table J(`J#` char(10),Jname varchar(20), City char(10));
+
+create table SPJ(`S#` char(10) , `P#` char(10), `J#` char(10),  Qty int(4));
+
+show tables;
+
+insert into S values('S1','Raj',10,'London');
+insert into S values('S2','Sushant',20,'Paris');
+insert into S values('S3','Ram',30,'Athens');
+
+insert into P values('P1','xyz','Black',15,'London');
+insert into P values('P2','pqr','Sky_blue',20,'Athens');
+insert into P values('P3','abc','White',25,'Paris');
+
+insert into J values('J1','cloud','Paris');
+insert into J values('J2','Big_data','London');
+insert into J values('J3','os','Athens');
+
+insert into SPJ values('s1','p1','J1',15);
+insert into SPJ values('s2','P2','J2',20);
+insert into SPJ values('s3','p3','J3',22);
+
+5.select * from S;
+
+6.select * from S where city!="London";
+
+7.select city from S;
+
+
+8.select `S#` , SNAME from S;
+
+9.select PNAME , COLOR from P where CITY = 'London';
+
+10.select * from S where CITY = 'London';
+
+11.select * from S where CITY = 'Paris' or 'Athens';
+
+12.select * from J where CITY = 'Athens';
+
+13.select * from P where weight between 12 and 14;
+
+14.select * from S where STATUS >= 20;
+
+15.select weight*1000 as MILIGRAM ,weight/100 as KILOGRAM from P;
+
+SQL Exercise 2
+==============================
+ 1.Display the Supplier table in the descending order of CITY. 
+==>select * from s order by city ;
+
+ 2.Display the Part Table in the ascending order of CITY and within the city in the ascending order of Part names.
+==>select * from p where order by city,pname; 
+
+ 3.Display all the Suppliers with a status between 10 and 20. 
+==>select * from s where status between 10 and 20;
+
+ 4.Display all the Parts and their Weight, which are not in the range of 10 and 15. 
+==>select pname,weight from p where weight not between 10 and 20;
+
+ 5.Display all the Part names starting with the letter ‘S’. 
+==>select * from p where pname like 'S%';
+
+ 6.Display all the Suppliers, belonging to cities starting with the letter ‘L’. 
+==>select * from s where sname like 'L%';
+
+
+ 7.Display all the Projects, with the third letter in JNAME as ‘n’.
+==>select * from j where jname like '--n%';
