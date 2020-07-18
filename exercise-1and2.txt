@@ -81,12 +81,12 @@ SQL Exercise 2
  4.Display all the Parts and their Weight, which are not in the range of 10 and 15. 
 ==>select pname,weight from p where weight not between 10 and 20;
 
- 5.Display all the Part names starting with the letter ‘S’. 
+ 5.Display all the Part names starting with the letter â€˜Sâ€™. 
 ==>select * from p where pname like 'S%';
 
- 6.Display all the Suppliers, belonging to cities starting with the letter ‘L’. 
+ 6.Display all the Suppliers, belonging to cities starting with the letter â€˜Lâ€™. 
 ==>select * from s where sname like 'L%';
 
 
- 7.Display all the Projects, with the third letter in JNAME as ‘n’.
+ 7.Display all the Projects, with the third letter in JNAME as â€˜nâ€™.
 ==>select * from j where jname like '--n%';
