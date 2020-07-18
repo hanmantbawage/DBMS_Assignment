@@ -1,0 +1,30 @@
+===========================================================Assignment –06===============================================
+Using Special Operators in Conditions.
+
+1)Write two different queries that would produce all orders taken on October 3rdor 4th, 1990.
+==>  1.By using or operator .
+   select * from orders where odate='1990-10-03' or odate='1990-10-04';
+
+     2.bu using between method.
+   select * from orders where odate between '1990-10-03' and '1990-10-04';
+
+2)Write a query that selects all of the customers serviced by Peel or Motika.
+ (Hint: the snum field relates the two tables to one another).
+
+==>  select * from  salespeople
+		 s join  customers c on s.snum=c.snum  
+				where s.sname='peel' or s.sname='motika';
+
+
+3)Write a query that will produce all the customers whose names begin with a letter from ‘A’ to ‘G’.
+
+==>select cname from customers where cname>='A' and cname<='G';
+
+4)Write a query that selects all customers whose names begin with the letter ‘C’.
+ ==> 2 way to solve this query.
+  	select * from customers where cname >'c' and cname <'d';
+
+   	select * from customers where cname like 'c%';
+
+5)Write a query that selects all orders except those with zeroes or NULLs in the amt field
+==>select * from orders where amt>0;
