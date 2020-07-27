@@ -16,3 +16,5 @@ first   ||  Second
 10000   ||  9000
 */
 select max(sal)as first,min(sal) as second  from (select distinct sal from demo order by sal desc limit 2) as tempp ;
+
+
