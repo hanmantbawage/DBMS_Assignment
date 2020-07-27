@@ -1,0 +1,70 @@
+Assignment – 10
+Joining a Table to Itself.
+
+1) Write a query that produces all pairs of salespeople who are living in the same city. Exclude combinations of salespeople with themselves as well as duplicate rows with the order reversed.
+
+==>select s1.sname,s2.sname,s1.city
+
+	 from salespeople s1,salespeople s2
+ where  	 s1.city!=s2.city  group by 
+ s1.sname 	
+	 order by s1.sname;
+
+2) Write a query that produces the names and cities of all customers with the same rating as Hoffman.
+
+==>select * from customers having rating =(select rating from customers where cname='hoffman' );
+ 
+
+
+ select * from customers where rating =(select rating from customers where cname='hoffman');
+=======================================================================================================================================================================
+
+Assignment – 11
+Subqueries.
+
+1) Write a query that uses a subquery to obtain all orders for the customer named Cisneros. Assume you do not know his customer number (cnum).
+==>
+
+ select * from orders where cnum = (select cnum from customers where cname='Cisneros');
+
+2) Write a query that produces the names and ratings of all customers who have above-average orders.
+==>
+select cname,rating from customers where rating >(select avg(rating) from customers);
+
+3) Write a query that selects the total amount in orders for each salesperson for whom this total is greater than the amount of the largest order in the table.
+==>select sum(amt),snum from orders group by snum having sum(amt)>(select max(amt) from orders);
+
+=======================================================================================================================================================================
+
+Assignment – 12
+Using the operators IN, ANY, and ALL.
+
+1) Write a query that selects all customers whose ratings are equal to or greater than ANY of Serres’.
+==> select * from customers having 
+		rating>=any
+		( select c.rating from customers c,salespeople s where sname='Serres');
+
+2) Write a query using ANY or ALL that will find all salespeople who have no customers located in their city.
+==>select sname,city from  salespeople where city not in (select city from customers);
+
+3) Write a query that selects all orders for amounts greater than any for the customers in London.
+==>
+select * from orders where amt>	
+			any(select amt from orders where cnum=any
+				(select cnum from customers where city='london'));
+
+
+
+4) Write the above query using MIN or MAX.
+
+==>select * from orders where amt>
+	(select min(amt )from orders where cnum = any 
+		(select cnum from customers where city = 'london'));
+
+
+
+
+
+
+
+
