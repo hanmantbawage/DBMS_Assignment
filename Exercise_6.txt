@@ -1,0 +1,46 @@
+                                Exercise - 6
+1.Display all the Suppliers with the same Status as the supplier, ‘CLARK’.
+->select * from s where status = 'CLERK;
+
+2. Display all the Employees in the same department as the employee ‘MILLER’.    
+select * from emp 
+where deptno = (select deptno from emp 
+where ename = 'Miller');
+              
+3.Display all the Parts which have more Weight than all the Red parts.
+->select pname from p where weight > (select weight  from p where color = 'Black');
+
+4.Display all the Projects going on in the same city as the project ‘TAPE’.
+->
+select jname from projects 
+where city in (select City from projects
+ where City = 'Tape');
+
+
+
+5.Display all the Parts with Weight less than all the Green parts.
+->select * from p where weight < (select weight from p where color='sky_blue');
+
+6.Display the name of the Supplier who has sold the maximum Quantity (in one sale).
+->select sname from s where `s#`= (select `s#` from spj where qty=(select max(qty) from spj));
+
+7.Display the name of the Employee with the minimum Salary.   
+->select ename , min(sal) from emp
+group by ename 
+order by min(sal) 
+limit 1 ;
+
+8.Display the name of the Supplier who has sold the maximum overall Quantity (sum of Sales).
+->select Sname from supplier ,SUPPLIER_PARTS_PROJECT
+where SUPPLIER_PARTS_PROJECT.`S#` = supplier .`S#` 
+and SUPPLIER_PARTS_PROJECT.Qty = (select max(Qty) from (Select max(Qty) , `S#` from SUPPLIER_PARTS_PROJECT
+ group by `S#` order by max(Qty) desc limit 1  ) as temp );
+                                     
+
+
+9
+.Display the name of the Department with the maximum number of Employees.   
+->select dept.deptname , count(emp.ename) from emp , dept 
+where emp.deptno =    dept.deptno
+group by dept.deptname
+order by count(emp.ename) desc limit 1 ;  
