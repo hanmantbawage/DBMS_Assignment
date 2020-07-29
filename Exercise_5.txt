@@ -1,0 +1,31 @@
+                                     Exercise - 5
+1.Display the Supplier name and the Quantity sold.
+->select sname ,qty from S,Spj where S.`s#` = Spj.`s#`;
+
+2.Display the Part name and Quantity sold.
+-> select pname,qty from P,Spj where P.`p#` = spj.`p#`;
+
+3.Display the Project name and Quantity sold.
+->select jname,qty from j,Spj where j.`j#` = spj.`j#`;
+
+4.Display the Supplier name, Part name, Project name and Quantity sold
+->select sname,pname,jname,qty from s,p,j,spj where s.`s#` = spj.`S#` and p.`p#` = spj.`p#` and j.`j#` = spj.`j#`;
+
+5.Display the Supplier name, Supplying Parts to a Project in the same City.
+->select sname,pname from s,p where s.city = p.city;
+
+6.Display the Part name that is ‘Red’ is color, and the Quantity sold.
+->select pname,qty from p,spj where p.`p#` = spj.`p#` and color = 'Red';
+
+7.Display all the Quantity sold by Suppliers with the Status = 20.
+->select qty ,sname from s,spj where s.`s#`=spj.`s#` and status = 20;
+
+8.Display all the Parts and Quantity with a Weight > 14.
+->select p.*,spj.* from p,spj where p.`p#`=spj.`p#` and weight > 14;
+
+9.Display all the Project names and City, which has bought more than 500 Parts.
+->select pname, city from p where `p#` in (select `p#` from spj where qty>20);
+
+10.Display all the Part names and Quantity sold that have a Weight less than 15.
+->select pname,qty from p,spj where  p.`p#`= spj.`p#` and weight < 15;
+
