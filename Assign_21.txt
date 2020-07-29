@@ -1,0 +1,22 @@
+                                 Assignment - 21
+1.Give Amit the right to change the ratings of the customers.
+->create view v1 as select rating from customers;
+  grant update  on v1 to Amit ;
+
+2.Give Manoj the right to give other users the right to query the Orders table.
+->grant all on customers  to public ;
+
+3.Take the INSERT privilege on Salespeople away from Ajita.
+->revoke insert on salespeople from Ajita;
+
+4.Grant Abhijeet the right to insert or update the Customers table while keeping her
+  possible rating values in the range of 100 to 500.
+->create view v2 as select * from customers where rating between 100 and 500;
+  grant insert,update on v2 to abhijeet;
+
+5.Allow Vikram to query the Customers table, but restrict his access to those
+  customers whose rating is the lowest.
+->create view v3 as select * from customers where rating > (select min(rating)   from   customers);
+  grant all on v3to vikram;
+  
+  
