@@ -1,0 +1,39 @@
+                            Assignment - 20
+1.Which of these views are updateable (will allow DML operations)? 
+->a).Create View Dailyorders
+    as Select Distinct cnum, snum, onum, odate from Orders; 
+ -> views Not updateble due to distinct keyword are used in query.
+
+b)Create View Custotals
+as Select cname, Sum (amt) Sum_Amt from Orders, Customers
+where Orders.cnum=Customers.cnum
+Group by cname;
+-> views Not updateble which consist join .
+
+c)Create view Thirdorders
+  as Select * from Dailyorders where
+  odate=’1990-10-03’;
+->Updateble  
+
+d) Create view Nullcities
+   as Select snum, sname, city
+   from Salespeople
+   where city is NULL
+   OR sname BETWEEN ‘A’ and ‘MZ’;
+->Updatble.
+
+2.Create a view of the Salespeople table called Commissions. This view will include
+only the snum and comm fields. Through this view, someone could enter or change
+commissions, but only to values between .10 and .20. 
+->create view Commission as select snum , comm from Salespeople where comm between  .10 and .20 with check option;
+
+ grant insert , update on commission to user_name; 
+
+3.Some SQL implementations have a built-in constant representing the current date,
+sometimes called “CURDATE” or “SYSDATE”. The word SYSDATE can
+therefore be used in a SQL statement, and be replaced by the current date when the
+value is accessed by commands such as Select or Insert. We will use a view of the
+Orders table called Entryorders to insert rows into the Orders table. Create the
+Orders table, so that SYSDATE is automatically inserted for odate if no value is
+given. Then create the Entryorders view so that no values can be given. 
+->
